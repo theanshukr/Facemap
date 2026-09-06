@@ -384,6 +384,10 @@ def run_pipeline(
                 "notary_wallet": receipt.wallet_address,
             },
         }
+        with open(save_receipt, "w", encoding="utf-8") as f:
+            json.dump(out_data, f, indent=2)
+        console.print(f"[bold green][+] Match results saved to {save_receipt}[/bold green]")
+
     print_final_verification_section(
         is_social_winner=True,
         winner_or_top_web=top_result,

@@ -1,0 +1,40 @@
+{
+  "input_provenance": {
+    "input_image_path": "sample_images/unknown.webp",
+    "input_image_hash": "f263ce25d0b42643017e1eac80584226fbf656bf9e54850dbafd08329fe89143",
+    "face_vector_hash": "a52ec372592b6a3242d92cb357d1357d7b2009eb46e119cd090a4a3549d5a190"
+  },
+  "discovered_match": {
+    "candidate_content_hash": "11eebb9783bfe9d39361a22c0a09f2e4fbf2a0c19cf91d52e47428e63501589f",
+    "content_type": "Post",
+    "discovery_timestamp": 1788681007,
+    "face_similarity": 0.9434,
+    "face_verification": "VERIFIED",
+    "platform": "TWITTER",
+    "post_url": "https://x.com/i/status/2095857089734443264",
+    "search_engine": "Reverse Image Search"
+  },
+  "related_verified_content": [
+    "https://www.youtube.com/shorts/fPtbmUEvh5k",
+    "https://x.com/CultureCave_/status/2094186743125647799",
+    "https://www.instagram.com/p/DbUz9V_llGl",
+    "https://www.youtube.com/shorts/qF42ntbeJUM",
+    "https://www.instagram.com/p/DbVEpHmjg4Y?img_index=2&hl=fa",
+    "https://x.com/Ankitaker/status/2089236751655276606",
+    "https://www.youtube.com/watch?v=4XV8wY6rlI8",
+    "https://www.instagram.com/p/DcI1NIRDNR-",
+    "https://www.youtube.com/watch?v=Wa_o_xmmm-E",
+    "https://www.reddit.com/r/moviecritic/comments/1uoj7c1/what_are_your_thoughts_on_tom_holland_as_an_actor"
+  ],
+  "blockchain_proof": {
+    "match_record_hash": "a0770c599b9475f1681861c3f88a61005e94062f10d967c474820e8437f17392",
+    "network": "Polygon Amoy Testnet",
+    "chain_id": 80002,
+    "contract_address": "0x1aD68F403Da3B0C800CC7A8666bD107efdd0B331",
+    "transaction_hash": "0xfcd0ba87e84f6e6bd55b8127a29f4086f29139abe5fd78074c4e631d10f63db2",
+    "block_number": 46862573,
+    "explorer_url": "https://amoy.polygonscan.com/tx/0xfcd0ba87e84f6e6bd55b8127a29f4086f29139abe5fd78074c4e631d10f63db2",
+    "gas_used": 537661,
+    "notary_wallet": "0x97ca702e83de1e3DAfB9CEc3DAa485e3683Afa34"
+  }
+}

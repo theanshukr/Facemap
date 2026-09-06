@@ -3,28 +3,30 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Blockchain](https://img.shields.io/badge/Blockchain-Polygon%20Amoy%20%7C%20Sepolia-purple.svg)](https://amoy.polygonscan.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Tests Passing](https://img.shields.io/badge/Tests-54%20Passed-brightgreen.svg)](tests/)
+[![Tests Passing](https://img.shields.io/badge/Tests-87%20Passed-brightgreen.svg)](tests/)
 
-An end-to-end computer vision and blockchain pipeline that detects and encodes a face from a photo, finds real matching social-media content via genuine live reverse-image search, biometrically cross-verifies candidate faces, deterministically constructs a **canonical match record**, anchors that match proof to a public blockchain (Polygon Amoy), and independently verifies the integrity of the match record against the on-chain immutable state.
+An end-to-end computer vision and blockchain pipeline that detects and encodes a face from a photo, finds real matching social-media content via genuine live reverse-image search and identity resolution, biometrically cross-verifies candidate faces, deterministically constructs a **canonical match record**, anchors that match proof to a public blockchain (Polygon Amoy), and independently verifies the integrity of the match record against the on-chain immutable state.
 
 ---
 
 ## ✦ 1. System Architecture & Workflows
 
-### Diagram 1: End-to-End Pipeline
+### Diagram 1: End-to-End Pipeline & Identity Discovery
 ```mermaid
 graph TD
     A[Input Face Photo] --> B[Face Engine: YuNet Detection]
     B --> C[OpenCV SFace 128-D Neural Embedding]
-    C --> D[Live Reverse Visual Search: Google Lens / SerpApi]
-    D --> E[URL Validator: Structure & Accessibility Probing]
-    E --> F[Face Matcher: Multi-Candidate Ranking & Biometric Verification]
-    F --> G[Platform Priority Selection: Instagram > X > Reddit]
-    G --> H[Canonical Match Record Construction]
-    H --> I[Deterministic SHA-256 → matchRecordHash]
-    I --> J[Blockchain Notary: FaceProofRegistry on Polygon Amoy]
-    J --> K[Mined On-Chain State & Transaction Receipt]
-    K --> L[Independent Step 5 Match Verification & Tamper Detection]
+    C --> D[Multi-Engine Reverse Search: SerpApi / Bing Visual Search]
+    D --> E[Identity Resolver & Name Extraction Engine]
+    E --> F[Profile Crawler & Cross-Platform Social Discovery]
+    F --> G[URL & Media Validator: Probing & Anti-Scrape Extraction]
+    G --> H[Face Matcher: Multi-Candidate Ranking & Biometric Verification]
+    H --> I[Platform Priority Selection: 13+ Social Networks]
+    I --> J[Canonical Match Record Construction]
+    J --> K[Deterministic SHA-256 → matchRecordHash]
+    K --> L[Blockchain Notary: FaceProofRegistry on Polygon Amoy]
+    L --> M[Mined On-Chain State & Transaction Receipt]
+    M --> N[Independent Step 5 Match Verification & Tamper Detection]
 ```
 
 ### Diagram 2: Cryptographic Data Integrity & Hash Separation
@@ -106,7 +108,7 @@ The system provides complete algorithmic transparency behind every candidate sel
 
 ```text
 SEARCH PROVENANCE & DISCOVERY PIPELINE
-• Search Engine:          Google Lens (SerpApi)
+• Search Engine:          Live Visual Search (SerpApi / Bing) + Identity Resolver
 • Candidates Discovered:  12
 • Biometric Candidates:   8
 • Social Candidates:      3
@@ -119,9 +121,13 @@ MATCH EXPLAINABILITY ANALYSIS
 • Candidate face detected:  ✓ (1 face(s) found)
 
 • Face Similarity:          94.27% (Cosine metric)
-• Configured Threshold:     70.00%
+• Configured Threshold:     70.00% (Default baseline: 40.00%)
 • Decision Engine:          94.27% ≥ 70.00% → FACE MATCH VERIFIED
 ```
+
+### Supported Social Networks & Platforms (13+)
+- **Social Media:** Instagram, X (Twitter), Facebook, Reddit, Threads, Bluesky, Mastodon, TikTok
+- **Professional & Developer:** LinkedIn, GitHub, Medium, YouTube
 
 ---
 
@@ -130,7 +136,7 @@ MATCH EXPLAINABILITY ANALYSIS
 | Parameter | Value |
 |---|---|
 | **Network** | **Polygon Amoy Testnet** (Chain ID: `80002`) |
-| **RPC Endpoint** | `https://polygon-amoy.drpc.org` |
+| **RPC Endpoint** | `https://polygon-amoy.drpc.org` (with multi-RPC fallback) |
 | **Registry Contract** | `0x1aD68F403Da3B0C800CC7A8666bD107efdd0B331` |
 | **PolygonScan Explorer** | [amoy.polygonscan.com/address/0x1aD68F403Da3B0C800CC7A8666bD107efdd0B331](https://amoy.polygonscan.com/address/0x1aD68F403Da3B0C800CC7A8666bD107efdd0B331) |
 
@@ -173,7 +179,7 @@ python verify_proof.py --receipt my_live_receipt.json
 python test_tamper.py
 ```
 
-### Run Full Test Suite
+### Run Full Test Suite (87 Tests)
 ```bash
 python -m pytest -q
 ```
