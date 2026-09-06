@@ -1,0 +1,36 @@
+{
+  "input_provenance": {
+    "input_image_path": "sample_images/sample.webp",
+    "input_image_hash": "fe2043607a18368a518a416cdd50ff23bc113c480146f487b078590e654050c6",
+    "face_vector_hash": "c6765eb3877946b7e123c4818c40c2cc10855740c5cb8999d49b7d68709861fa"
+  },
+  "discovered_match": {
+    "candidate_content_hash": "87849b83c1171b30bd6daa5a3c8a737bab742d0cf6c5eed00884d320df960054",
+    "content_type": "Post",
+    "discovery_timestamp": 1788701592,
+    "face_similarity": 0.9533,
+    "face_verification": "VERIFIED",
+    "platform": "TWITTER",
+    "post_url": "https://x.com/CodeByPoonam/status/2088245837675843872",
+    "search_engine": "Reverse Image Search"
+  },
+  "related_verified_content": [
+    "https://www.reddit.com/r/StockMarket/comments/1uiwzgp/alphabet_stock_pops_4_on_dow_debut_but_the_tech",
+    "https://www.linkedin.com/posts/sundarpichai_thank-you-to-stanford-president-jon-levin-activity-7445556013572734976-dB0L",
+    "https://www.linkedin.com/posts/businessinsider_inside-the-career-rise-of-sundar-pichai-activity-7429165501177651200-4VRa",
+    "https://www.instagram.com/reel/C7O8UTMM-v6",
+    "https://www.instagram.com/p/DAZfnztyODo",
+    "https://www.instagram.com/p/DWoh5BXFFG9"
+  ],
+  "blockchain_proof": {
+    "match_record_hash": "b16419ee01da990c5a4ce55e155425f3c6aceae217e769ac9bf0888e42491cb3",
+    "network": "Polygon Amoy Testnet",
+    "chain_id": 80002,
+    "contract_address": "0x1aD68F403Da3B0C800CC7A8666bD107efdd0B331",
+    "transaction_hash": "0xaf3b5bb9f7268612183eef094cd970b96ef3e23c009b33cfd642d3639b27c766",
+    "block_number": 46883156,
+    "explorer_url": "https://amoy.polygonscan.com/tx/0xaf3b5bb9f7268612183eef094cd970b96ef3e23c009b33cfd642d3639b27c766",
+    "gas_used": 561149,
+    "notary_wallet": "0x97ca702e83de1e3DAfB9CEc3DAa485e3683Afa34"
+  }
+}
