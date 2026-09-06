@@ -1,0 +1,22 @@
+{
+  "image_path": "sample_images/mark.jpg",
+  "image_sha256": "d8b8f07ee9bf8e7acf6f852d8c893070496341281abfc2b6246df684d5c4ffe6",
+  "face_vector_hash": "fcc6c0e7b39633c9d150b9acac947f44ae776f067de98a8eebd227f348e49c1d",
+  "matched_social_url": "https://www.tv-media.at/personen/mark-justice",
+  "name_attribution": "Mark Justice",
+  "name_source": "reverse_search_metadata",
+  "content_type": "Web Page",
+  "is_social_media": false,
+  "similarity_score": 0.9325178508346734,
+  "is_match": true,
+  "blockchain": {
+    "network": "Polygon Amoy Testnet",
+    "chain_id": 80002,
+    "contract_address": "0x1aD68F403Da3B0C800CC7A8666bD107efdd0B331",
+    "tx_hash": "0x0724d4ab5210720eb7029c983a6249583d23c0121e718f6a1debf36275f76db5",
+    "block_number": 46814965,
+    "explorer_url": "https://amoy.polygonscan.com/tx/0x0724d4ab5210720eb7029c983a6249583d23c0121e718f6a1debf36275f76db5",
+    "gas_used": 767650
+  },
+  "timestamp": 1788633406
+}
