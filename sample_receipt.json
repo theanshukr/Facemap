@@ -1,0 +1,28 @@
+{
+  "input_provenance": {
+    "input_image_path": "sample_images/mark.jpg",
+    "input_image_hash": "d8b8f07ee9bf8e7acf6f852d8c893070496341281abfc2b429d27571d4b68ff5",
+    "face_vector_hash": "fcc6c0e7b39633c9d150b9acac947f44ae776f067de98a96495b28d0862ee5b8"
+  },
+  "discovered_match": {
+    "candidate_content_hash": "a1b2c3d4e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abcdef0",
+    "content_type": "Post",
+    "discovery_timestamp": 1725580000,
+    "face_similarity": 0.9454,
+    "face_verification": "VERIFIED",
+    "platform": "INSTAGRAM",
+    "post_url": "https://www.instagram.com/p/CzIy6Htgn6g",
+    "search_engine": "Reverse Image Search"
+  },
+  "blockchain_proof": {
+    "match_record_hash": "e656f6a727ccf000d17328ba8ef07e2d12f79f8e6eae980132ce5781716ac8d2",
+    "network": "Polygon Amoy",
+    "chain_id": 80002,
+    "contract_address": "0x0000000000000000000000000000000000000000",
+    "transaction_hash": "0x4a5b6c7d8e9f0123456789abcdef0123456789abcdef0123456789abcdef0123",
+    "block_number": 12345678,
+    "explorer_url": "https://amoy.polygonscan.com/tx/0x4a5b6c7d8e9f0123456789abcdef0123456789abcdef0123456789abcdef0123",
+    "gas_used": 214500,
+    "notary_wallet": "0x93E2E0bd78D78ac5dB93B108021B798D3ac37803"
+  }
+}

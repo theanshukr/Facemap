@@ -321,40 +321,31 @@ def print_step4_match_anchor(match_record, input_image_hash: str, receipt) -> No
 
 def print_step5_match_verification(outcome) -> None:
     """Displays Step 5 independent match record on-chain re-verification."""
-    console.print("[bold cyan]Selected Discovered Match:[/bold cyan]")
-    console.print(f"Platform: [bold yellow]{outcome.platform.upper()}[/bold yellow] | Content Type: [yellow]{outcome.content_type}[/yellow]")
-
-    console.print("\n[bold cyan]Local/Reconstructed Match Record Hash:[/bold cyan]")
-    console.print(f"[bold magenta]{outcome.local_match_record_hash}[/bold magenta]")
-
-    console.print("\n[bold cyan]On-Chain Match Record Hash:[/bold cyan]")
-    console.print(f"[bold magenta]{outcome.on_chain_match_record_hash}[/bold magenta]")
-
-    console.print("\n[bold cyan]Candidate Content Hash:[/bold cyan]")
-    console.print(f"[dim white]{outcome.local_candidate_content_hash}[/dim white]")
-
-    console.print("\n[bold cyan]On-Chain Candidate Content Hash:[/bold cyan]")
-    console.print(f"[dim white]{outcome.on_chain_candidate_content_hash}[/dim white]")
-
-    console.print("\n[bold cyan]URL:[/bold cyan]")
-    console.print(f"[blue]{outcome.local_url}[/blue]")
-
-    console.print("\n[bold cyan]On-Chain URL:[/bold cyan]")
-    console.print(f"[blue]{outcome.on_chain_url}[/blue]")
-
-    console.print("\n" + "━" * 56)
+    console.print("\n" + "─" * 60)
+    console.print("[bold cyan]STEP 5 — BLOCKCHAIN VERIFICATION[/bold cyan]\n")
 
     if outcome.is_valid:
-        console.print("\n[bold green]✅ MATCH RECORD VERIFIED[/bold green]")
-        console.print("[bold green]✅ ON-CHAIN RECORD MATCHES THE DISCOVERED MATCH[/bold green]")
-        console.print("[bold green]✅ RECORD IS TAMPER-EVIDENT[/bold green]\n")
+        console.print(f"Network: [bold yellow]{outcome.network}[/bold yellow]\n")
+        if outcome.tx_hash:
+            console.print("Transaction:")
+            console.print(f"[magenta]{outcome.tx_hash}[/magenta]\n")
+        console.print("On-chain Match Record Hash:")
+        console.print(f"[bold magenta]{outcome.on_chain_match_record_hash}[/bold magenta]\n")
+        console.print("[bold white]Independent Verification:[/bold white]")
+        console.print("[bold green]✓ On-chain proof found[/bold green]")
+        console.print("[bold green]✓ Match record reconstructed[/bold green]")
+        console.print("[bold green]✓ Local hash computed[/bold green]")
+        console.print("[bold green]✓ Hash matches on-chain record[/bold green]")
+        console.print("[bold green]✓ TAMPER-EVIDENT PROOF VERIFIED[/bold green]")
+        console.print("─" * 60 + "\n")
         print_verification_certificate(outcome)
     else:
-        console.print("\n[bold red]❌ MATCH RECORD VERIFICATION FAILED[/bold red]")
-        console.print("[bold red]❌ ON-CHAIN RECORD DOES NOT MATCH CURRENT DATA[/bold red]")
-        console.print("[bold red]⚠️ POSSIBLE TAMPERING / DATA MODIFICATION DETECTED[/bold red]\n")
+        console.print("[bold red]✗ MATCH RECORD VERIFICATION FAILED[/bold red]")
+        console.print("[bold red]✗ LOCAL HASH DOES NOT MATCH ON-CHAIN HASH[/bold red]")
+        console.print("[bold red]⚠️ POSSIBLE TAMPERING / DATA MODIFICATION DETECTED[/bold red]")
         if outcome.tamper_details:
-            console.print(f"[yellow]Details: {outcome.tamper_details}[/yellow]\n")
+            console.print(f"\n[dim yellow]Details: {outcome.tamper_details}[/dim yellow]")
+        console.print("─" * 60 + "\n")
 
 
 def print_verification_certificate(outcome) -> None:

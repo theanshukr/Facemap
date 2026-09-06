@@ -179,75 +179,54 @@ class BlockchainNotary:
         input_image_bytes32 = to_bytes32_hex(input_image_sha256)
         similarity_score_scaled = int(round(sim_score * 10000))
 
-        if require_live_contract:
-            # 1. Check RPC connection
-            if not self.is_connected:
-                raise RuntimeError(
-                    f"Cannot connect to RPC endpoint for {self.net_config['name']} ({self.net_config['rpc_url']}). "
-                    "Please check your network connection."
-                )
-
-            # 2. Check Private Key
-            if not self.account:
-                raise RuntimeError(
-                    "PRIVATE_KEY is missing or invalid in .env. "
-                    "A valid private key is strictly required for live blockchain notarization."
-                )
-
-            # 3. Check Deployed Contract Address & Bytecode
-            if not self.contract_address or not self.w3.is_address(self.contract_address):
-                raise RuntimeError(
-                    "REGISTRY_CONTRACT_ADDRESS is not set or not a valid EVM address in .env. "
-                    "Please set a valid deployed FaceProofRegistry contract address."
-                )
-
-            if not self.verify_contract_deployed():
-                raise RuntimeError(
-                    f"No deployed smart contract code found at address {self.contract_address} on {self.net_config['name']}. "
-                    "Please deploy FaceProofRegistry.sol (using deploy_contract.py) and update REGISTRY_CONTRACT_ADDRESS."
-                )
-
-            # 4. Check Wallet Balance
-            balance = self.get_wallet_balance()
-            if balance <= 0:
-                raise RuntimeError(
-                    f"Wallet {self.account.address} has 0.0 native balance on {self.net_config['name']}. "
-                    "Please fund this wallet with testnet tokens (POL/MATIC) from the faucet to send transactions."
-                )
-
-            # 5. Submit real contract transaction
-            return self._anchor_via_contract(
-                match_record_bytes32=match_record_bytes32,
-                input_image_bytes32=input_image_bytes32,
-                candidate_content_bytes32=candidate_content_bytes32,
-                post_url=post_url,
-                similarity_score_scaled=similarity_score_scaled,
-                canonical_json=canonical_json,
-                match_record_hash=match_record_hash,
-                candidate_content_hash=candidate_content_hash,
-                input_image_sha256=input_image_sha256,
-                match_dict=match_dict,
-            )
-
-        # Developer / Non-strict branch
-        if self.contract and self.is_connected and self.verify_contract_deployed() and self.account and self.get_wallet_balance() > 0:
-            return self._anchor_via_contract(
-                match_record_bytes32=match_record_bytes32,
-                input_image_bytes32=input_image_bytes32,
-                candidate_content_bytes32=candidate_content_bytes32,
-                post_url=post_url,
-                similarity_score_scaled=similarity_score_scaled,
-                canonical_json=canonical_json,
-                match_record_hash=match_record_hash,
-                candidate_content_hash=candidate_content_hash,
-                input_image_sha256=input_image_sha256,
-                match_dict=match_dict,
-            )
-        else:
+        # 1. Check RPC connection
+        if not self.is_connected:
             raise RuntimeError(
-                "Blockchain notarization requires a deployed contract and funded wallet. "
-                "Simulated offline notarization has been permanently disabled."
+                f"Cannot connect to RPC endpoint for {self.net_config['name']} ({self.net_config['rpc_url']}). "
+                "Please check your internet connection."
             )
+
+        # 2. Check Private Key
+        if not self.account:
+            raise RuntimeError(
+                "PRIVATE_KEY is missing or invalid in .env. "
+                "A valid private key is strictly required for live blockchain notarization."
+            )
+
+        # 3. Check Deployed Contract Address & Bytecode
+        if not self.contract_address or not self.w3.is_address(self.contract_address):
+            raise RuntimeError(
+                "REGISTRY_CONTRACT_ADDRESS is not set or not a valid EVM address in .env. "
+                "Please set a valid deployed FaceProofRegistry contract address."
+            )
+
+        if not self.verify_contract_deployed():
+            raise RuntimeError(
+                f"No deployed smart contract code found at address {self.contract_address} on {self.net_config['name']}. "
+                "Please deploy FaceProofRegistry.sol (using deploy_contract.py) and update REGISTRY_CONTRACT_ADDRESS."
+            )
+
+        # 4. Check Wallet Balance
+        balance = self.get_wallet_balance()
+        if balance <= 0:
+            raise RuntimeError(
+                f"Wallet {self.account.address} has 0.0 native balance on {self.net_config['name']}. "
+                "Please fund this wallet with testnet tokens (POL/MATIC) from the faucet to send transactions."
+            )
+
+        # 5. Submit real contract transaction
+        return self._anchor_via_contract(
+            match_record_bytes32=match_record_bytes32,
+            input_image_bytes32=input_image_bytes32,
+            candidate_content_bytes32=candidate_content_bytes32,
+            post_url=post_url,
+            similarity_score_scaled=similarity_score_scaled,
+            canonical_json=canonical_json,
+            match_record_hash=match_record_hash,
+            candidate_content_hash=candidate_content_hash,
+            input_image_sha256=input_image_sha256,
+            match_dict=match_dict,
+        )
 
     def anchor_proof(
         self,

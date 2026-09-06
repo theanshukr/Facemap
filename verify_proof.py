@@ -22,11 +22,10 @@ def main():
         description="Verify an image proof against the blockchain registry"
     )
     parser.add_argument(
-        "--image",
-        "-i",
-        type=str,
+        "receipt_file",
+        nargs="?",
         default="",
-        help="Path to the image to verify (optional if --receipt is provided)",
+        help="Optional positional path to saved JSON proof receipt file",
     )
     parser.add_argument(
         "--receipt",
@@ -34,6 +33,13 @@ def main():
         type=str,
         default="",
         help="Path to saved JSON proof receipt file to verify match record against blockchain",
+    )
+    parser.add_argument(
+        "--image",
+        "-i",
+        type=str,
+        default="",
+        help="Path to the image to verify (optional if receipt is provided)",
     )
     parser.add_argument(
         "--contract",
@@ -58,14 +64,15 @@ def main():
     )
 
     args = parser.parse_args()
+    receipt_target = args.receipt or args.receipt_file
 
-    if not args.image and not args.receipt and not args.tx:
-        console.print("[bold red]Please provide either --receipt <receipt.json> or --image <path>[/bold red]")
+    if not args.image and not receipt_target and not args.tx:
+        console.print("[bold red]Please provide a receipt file (e.g. python verify_proof.py <receipt.json>) or --image <path>[/bold red]")
         sys.exit(1)
 
     console.print(
         Panel(
-            "[bold cyan]* Blockchain Match Proof Verifier *[/bold cyan]\n"
+            "[bold cyan]✦ Blockchain Match Proof Verifier ✦[/bold cyan]\n"
             "Validating cryptographic match record fingerprint against immutable on-chain state...",
             border_style="cyan",
             box=box.ROUNDED,
@@ -74,8 +81,8 @@ def main():
 
     verifier = ProofVerifier(network_key=args.network, contract_address=args.contract)
 
-    if args.receipt:
-        outcome = verifier.verify_match_record(args.receipt, contract_address=args.contract)
+    if receipt_target:
+        outcome = verifier.verify_match_record(receipt_target, contract_address=args.contract)
         from src.utils.ui_display import print_step5_match_verification
         print_step5_match_verification(outcome)
         sys.exit(0 if outcome.is_valid else 1)

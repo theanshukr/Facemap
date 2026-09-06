@@ -54,6 +54,13 @@ def run_pipeline(
 ):
     print_banner()
 
+    # Automatically assign dedicated receipt file per image if not explicitly passed
+    if not save_receipt:
+        img_stem = Path(image_path).stem if image_path else "match"
+        receipts_dir = BASE_DIR / "receipts"
+        receipts_dir.mkdir(exist_ok=True)
+        save_receipt = str(receipts_dir / f"{img_stem}_receipt.json")
+
     # Verify input image exists
     if not os.path.exists(image_path):
         console.print(f"[bold red]Error: Input image '{image_path}' not found.[/bold red]")
@@ -414,10 +421,16 @@ def main():
         description="Face ID + Reverse Search + Blockchain Verification Pipeline"
     )
     parser.add_argument(
+        "image_pos",
+        nargs="?",
+        default="",
+        help="Optional positional path to input face image file",
+    )
+    parser.add_argument(
         "--image",
         "-i",
         type=str,
-        default=str(BASE_DIR / "sample_images" / "who.jpg"),
+        default="",
         help="Path to input face image file",
     )
     parser.add_argument(
@@ -447,7 +460,7 @@ def main():
         "-s",
         type=str,
         default="",
-        help="Path to save output JSON receipt file",
+        help="Path to save output JSON receipt file (defaults to receipts/<image_name>_receipt.json)",
     )
     parser.add_argument(
         "--url",
@@ -491,8 +504,20 @@ def main():
         )
         return
 
+    image_path = args.image or args.image_pos
+    if not image_path:
+        console.print("[bold yellow]No input image specified via --image / -i.[/bold yellow]")
+        try:
+            image_path = input("Enter path to input face image (e.g. sample_images/who.jpg): ").strip()
+        except (KeyboardInterrupt, EOFError):
+            console.print("\n[bold red]Operation cancelled.[/bold red]")
+            sys.exit(1)
+        if not image_path:
+            console.print("[bold red]Error: No image path provided. Please specify an image using --image <path>[/bold red]")
+            sys.exit(1)
+
     run_pipeline(
-        image_path=args.image,
+        image_path=image_path,
         network=args.network,
         contract_address=args.contract,
         threshold=args.threshold,
