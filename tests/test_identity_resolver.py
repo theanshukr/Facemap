@@ -4,6 +4,7 @@ including multi-source name convergence, noise rejection, query generation,
 and failure isolation.
 """
 
+import os
 import pytest
 from src.search_engine.identity_resolver import IdentityResolver, IdentityCandidate
 from src.search_engine.identity_social_discoverer import IdentitySocialDiscoverer
