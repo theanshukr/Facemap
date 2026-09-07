@@ -2,6 +2,7 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Blockchain](https://img.shields.io/badge/Blockchain-Polygon%20Amoy-purple.svg)](https://amoy.polygonscan.com/address/0x1aD68F403Da3B0C800CC7A8666bD107efdd0B331)
+[![YouTube Demo](https://img.shields.io/badge/YouTube-Video%20Demo-red?logo=youtube)](https://www.youtube.com/watch?v=xrj4aBBVN0Y)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Tests Passing](https://img.shields.io/badge/Tests-87%20Passed-brightgreen.svg)](tests/)
 
@@ -290,7 +291,11 @@ python -m pytest -q
 
 ---
 
-## ✦ 12. Demo
+## ✦ 12. Video Demonstration
+
+[![Facemap Video Demonstration](https://img.youtube.com/vi/xrj4aBBVN0Y/maxresdefault.jpg)](https://www.youtube.com/watch?v=xrj4aBBVN0Y)
+
+> 📹 **Watch Full Walkthrough on YouTube**: [Facemap End-to-End Pipeline & Blockchain Verification (YouTube)](https://www.youtube.com/watch?v=xrj4aBBVN0Y)
 
 The recorded demonstration showcases the complete 10-step lifecycle:
 1. Input face detection (YuNet)
@@ -303,8 +308,6 @@ The recorded demonstration showcases the complete 10-step lifecycle:
 8. Polygon Amoy blockchain notarization
 9. Independent on-chain proof verification (`verify_proof.py`)
 10. Multi-vector anti-tamper demonstration (`test_tamper.py`)
-
-*(Demo video link placeholder: [Screen Recording Demo Link])*
 
 ---
 
