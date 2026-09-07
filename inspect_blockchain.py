@@ -70,13 +70,13 @@ def inspect_blockchain(network_key: str = DEFAULT_NETWORK, contract_address: str
         header_style="bold magenta",
     )
     table.add_column("#", style="cyan", width=3)
-    table.add_column("Match Record Hash (Key)", style="green", max_width=22, overflow="ellipsis")
-    table.add_column("Social Post URL", style="blue", max_width=32, overflow="ellipsis")
+    table.add_column("Match Record Hash (Key)", style="green", overflow="fold")
+    table.add_column("Social Post URL", style="blue", overflow="fold")
     table.add_column("Similarity", style="yellow", justify="center")
-    table.add_column("Input Image Hash", style="dim white", max_width=18, overflow="ellipsis")
-    table.add_column("Candidate Hash", style="dim white", max_width=18, overflow="ellipsis")
+    table.add_column("Input Image Hash", style="dim white", overflow="fold")
+    table.add_column("Candidate Hash", style="dim white", overflow="fold")
     table.add_column("Timestamp", style="white", max_width=20)
-    table.add_column("Verifier Address", style="magenta", max_width=16, overflow="ellipsis")
+    table.add_column("Verifier Address", style="magenta", overflow="fold")
 
     records_detail = []
 

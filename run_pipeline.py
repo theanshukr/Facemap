@@ -28,7 +28,6 @@ from src.utils.ui_display import (
     print_face_detection_summary,
     print_search_results,
     print_candidate_ranking_table,
-    print_search_provenance,
     print_match_analysis,
     print_match_evaluation,
     print_related_matches_table,
@@ -218,15 +217,6 @@ def run_pipeline(
         related_verified_matches = classified.get("related_matches", [])
         print_related_matches_table(related_verified_matches)
 
-    print_search_provenance(
-        engine=selected_candidate.source_engine or "Reverse Image Search",
-        total_discovered=len(candidates),
-        biometric_candidates=len(ranking_report.ranked_candidates),
-        social_candidates=sum(1 for c in ranking_report.ranked_candidates if c.is_social_media),
-        selected_platform=selected_candidate.platform,
-        similarity_score=match_result.similarity_score,
-        identity_candidate=identity_cand,
-    )
     print_match_analysis(match_result, threshold=threshold)
 
     if not is_social_winner:

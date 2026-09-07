@@ -93,7 +93,7 @@ def main():
 
     table = Table(title="[bold green]Blockchain Verification Outcome[/bold green]", box=box.ROUNDED)
     table.add_column("Property", style="cyan")
-    table.add_column("Value", style="white")
+    table.add_column("Value", style="white", overflow="fold")
 
     table.add_row("Status", f"[bold green]{outcome.status}[/bold green]" if outcome.is_valid else f"[bold red]{outcome.status}[/bold red]")
     table.add_row("Blockchain", outcome.network)

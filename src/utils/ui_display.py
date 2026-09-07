@@ -43,7 +43,7 @@ def print_face_detection_summary(result):
     """Displays face detection and landmark statistics."""
     table = Table(title="[bold green]Deep Neural Face Detection & Embedding (YuNet + SFace)[/bold green]", box=box.ROUNDED)
     table.add_column("Property", style="cyan", no_wrap=True)
-    table.add_column("Value", style="white")
+    table.add_column("Value", style="white", overflow="fold")
 
     table.add_row("Input File", str(result.image_path))
     table.add_row("Image SHA-256 (Provenance)", f"[yellow]{result.image_sha256}[/yellow]")
@@ -68,8 +68,8 @@ def print_search_results(candidates: List[Any]):
     table.add_column("#", style="dim", width=3)
     table.add_column("Platform / Source", style="cyan", width=18)
     table.add_column("Category", style="yellow", width=14)
-    table.add_column("Discovered Post / Page URL", style="magenta")
-    table.add_column("Candidate Image", style="white", width=18)
+    table.add_column("Discovered Post / Page URL", style="magenta", overflow="fold")
+    table.add_column("Candidate Image", style="white", width=18, overflow="fold")
     table.add_column("Engine", style="dim")
 
     for idx, c in enumerate(candidates, 1):
@@ -109,7 +109,7 @@ def print_candidate_ranking_table(ranking_report: Any):
     table.add_column("Type", style="yellow", width=10)
     table.add_column("Similarity", style="bold yellow", width=11)
     table.add_column("Status / Selection", style="bold", width=22)
-    table.add_column("Content URL", style="magenta")
+    table.add_column("Content URL", style="magenta", overflow="fold")
 
     top_social_winner, _ = ranking_report.select_final_social_match()
 
@@ -181,7 +181,7 @@ def print_match_evaluation(
     table_title = "[bold green]━━━ VERIFIED SOCIAL MEDIA MATCH ━━━[/bold green]" if is_social_media else "[bold yellow]━━━ TOP MATCHED NON-SOCIAL DISCOVERY ━━━[/bold yellow]"
     table = Table(title=table_title, box=box.ROUNDED)
     table.add_column("Property", style="cyan")
-    table.add_column("Verified Value", style="white")
+    table.add_column("Verified Value", style="white", overflow="fold")
 
     strat_label = "Highest Similarity Genuine Social Match (≥ 70%)" if is_social_media else "Top Matched Non-Social Discovery (≥ 70%)"
     table.add_row("Selection Strategy", f"[bold yellow]{strat_label}[/bold yellow]")
@@ -219,7 +219,7 @@ def print_search_provenance(
     """Displays search provenance and explainability."""
     table = Table(title="[bold green]SEARCH PROVENANCE & DISCOVERY PIPELINE[/bold green]", box=box.ROUNDED)
     table.add_column("Metric / Stage", style="cyan", width=26)
-    table.add_column("Details", style="white")
+    table.add_column("Details", style="white", overflow="fold")
 
     table.add_row("Search Engine", f"[bold yellow]{engine}[/bold yellow]")
     table.add_row("Candidates Discovered", f"[bold white]{total_discovered}[/bold white]")
@@ -253,7 +253,7 @@ def print_related_matches_table(related_matches: List[Any]) -> None:
     table.add_column("Type", style="yellow", width=10)
     table.add_column("Similarity", style="bold green", width=12)
     table.add_column("Verification", style="bold green", width=14)
-    table.add_column("Genuine Post / Reel URL", style="magenta")
+    table.add_column("Genuine Post / Reel URL", style="magenta", overflow="fold")
 
     for idx, r in enumerate(related_matches, 1):
         plat = getattr(r, "platform", "")
@@ -360,7 +360,7 @@ def print_verification_certificate(outcome) -> None:
         show_header=False,
     )
     table.add_column("Property", style="bold cyan", width=24)
-    table.add_column("Status / Value", style="bold white")
+    table.add_column("Status / Value", style="bold white", overflow="fold")
 
     table.add_row("Face Match", "[bold green]✓ VERIFIED[/bold green]")
     table.add_row("Similarity Score", f"[bold yellow]{outcome.similarity_score}[/bold yellow]")
@@ -381,7 +381,7 @@ def print_blockchain_receipt(receipt):
     """Displays blockchain notarization receipt."""
     table = Table(title="[bold green]Polygon Amoy Smart Contract Notarization Receipt[/bold green]", box=box.ROUNDED)
     table.add_column("Field", style="cyan")
-    table.add_column("Value", style="white")
+    table.add_column("Value", style="white", overflow="fold")
 
     table.add_row("Blockchain Network", f"[bold yellow]{receipt.network_name} (Chain ID: {receipt.chain_id})[/bold yellow]")
     table.add_row("Match Record Hash", f"[bold magenta]{receipt.match_record_hash}[/bold magenta]")

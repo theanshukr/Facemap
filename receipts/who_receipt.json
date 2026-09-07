@@ -1,0 +1,29 @@
+{
+  "input_provenance": {
+    "input_image_path": "sample_images/who.jpg",
+    "input_image_hash": "6cfbdaed7f886b5d1d4ff6024f9a421b32ff3208bb9a57f51bf777f05240c566",
+    "face_vector_hash": "4abd185815aa41b4776e14e787f53e7cef7f0cc924e19cd9ae5dc94d119131a8"
+  },
+  "discovered_match": {
+    "candidate_content_hash": "4d9b4f319f451763da60ff5e5e7f4151312f8a486a9482019ce54652b159f92d",
+    "content_type": "Reel",
+    "discovery_timestamp": 1788802740,
+    "face_similarity": 0.9484,
+    "face_verification": "VERIFIED",
+    "platform": "INSTAGRAM",
+    "post_url": "https://www.instagram.com/reel/DZIeEWdBdjn",
+    "search_engine": "Reverse Image Search"
+  },
+  "related_verified_content": [
+    "https://www.instagram.com/p/CzIy6Htgn6g",
+    "https://www.reddit.com/r/BollyBlindsNGossip/comments/1olv56a/happy_birthday_the_man_the_myth_the_legend_mr",
+    "https://www.instagram.com/p/DW-xKtBkkF0",
+    "https://x.com/ku1deep/status/2083917682504843579",
+    "https://x.com/bishnoiaji/status/1255165726631100418",
+    "https://www.reddit.com/r/ShahRukhKhan/comments/1ghx11d/on_the_occasion_of_shah_rukh_khans_birthday_post",
+    "https://www.instagram.com/p/DUYfkhNDOhO",
+    "https://www.reddit.com/r/ShahRukhKhan/comments/1k8yxla/i_think_srk_peaked_in_looks_in_the_early_2000s",
+    "https://www.reddit.com/r/BollyBlindsNGossip/comments/ugqa6v/who_is_the_best_khan_which_one_is_the_best_actor",
+    "https://www.instagram.com/reel/DPtnV_MjBAF"
+  ]
+}
