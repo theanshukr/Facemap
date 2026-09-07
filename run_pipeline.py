@@ -54,14 +54,12 @@ def run_pipeline(
 ):
     print_banner()
 
-    # Automatically assign dedicated receipt file per image if not explicitly passed
     if not save_receipt:
         img_stem = Path(image_path).stem if image_path else "match"
         receipts_dir = BASE_DIR / "receipts"
         receipts_dir.mkdir(exist_ok=True)
         save_receipt = str(receipts_dir / f"{img_stem}_receipt.json")
 
-    # Verify input image exists
     if not os.path.exists(image_path):
         console.print(f"[bold red]Error: Input image '{image_path}' not found.[/bold red]")
         sys.exit(1)
@@ -101,7 +99,6 @@ def run_pipeline(
             console.print(f"[bold red]❌ Search Provider Error: {e}[/bold red]")
             sys.exit(1)
 
-    # If direct social URL was provided by user (for offline test only)
     if direct_social_url and not live_demo:
         candidates.insert(
             0,
@@ -155,16 +152,12 @@ def run_pipeline(
         console.print("[bold red]Pipeline stopped. Blockchain proof will NOT be registered.[/bold red]")
         sys.exit(1)
 
-    # Identity Convergence (Attribution & Name Extraction)
     identity_cand = None
     try:
         identity_cand = IdentityResolver.resolve_identity(candidates)
     except Exception:
         pass
 
-    # Deterministic Selection Strategy:
-    # 1. Primary: Highest similarity genuine social media post (>= 70%)
-    # 2. Fallback: Top matched non-social web discovery (>= 70%) if no social media is found
     top_result, selection_reason = ranking_report.select_final_social_match(threshold=threshold)
     is_social_winner = top_result is not None
 
@@ -182,7 +175,6 @@ def run_pipeline(
     selected_candidate = top_result.candidate
     match_result = top_result.evaluation
 
-    # Attribution
     discovered_attribution = None
     if identity_cand and identity_cand.is_confident:
         discovered_attribution = identity_cand.name
@@ -217,7 +209,6 @@ def run_pipeline(
         selection_reason=selection_reason,
     )
 
-    # Related verified social matches
     related_verified_matches: list = []
     if is_social_winner:
         classified = ranking_report.get_classified_results(
@@ -227,7 +218,6 @@ def run_pipeline(
         related_verified_matches = classified.get("related_matches", [])
         print_related_matches_table(related_verified_matches)
 
-    # Search Provenance & Explainability Breakdown
     print_search_provenance(
         engine=selected_candidate.source_engine or "Reverse Image Search",
         total_discovered=len(candidates),

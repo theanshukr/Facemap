@@ -22,9 +22,9 @@ def test_end_to_end_verification_lifecycle(tmp_path):
     Validates end-to-end dataflow from face image to canonical match record,
     simulated on-chain anchoring, receipt generation, and independent re-verification.
     """
-    image_path = os.path.join(BASE_DIR, "sample_images", "mark.jpg")
+    image_path = os.path.join(BASE_DIR, "sample_images", "who.jpg")
     if not os.path.exists(image_path):
-        pytest.skip("Sample image mark.jpg not present")
+        image_path = os.path.join(BASE_DIR, "sample_images", "unknown.webp")
 
     # 1. Detect & Encode Face
     engine = FaceEngine()

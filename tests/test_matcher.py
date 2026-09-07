@@ -13,7 +13,7 @@ from src.search_engine.reverse_search import SocialMatchCandidate
 def test_face_matcher_self_comparison():
     engine = FaceEngine()
     matcher = FaceMatcher(threshold=0.40)
-    img_path = "sample_images/mark.jpg"
+    img_path = "sample_images/who.jpg"
     if not os.path.exists(img_path):
         img_path = "sample_images/mark_justice.jpg"
 
@@ -61,7 +61,7 @@ def test_rank_candidates_sorting_and_skipping():
     """
     engine = FaceEngine()
     matcher = FaceMatcher(threshold=0.40)
-    img_path = "sample_images/mark.jpg"
+    img_path = "sample_images/who.jpg"
 
     analysis = engine.analyze_image(img_path)
     primary_face = analysis.primary_face
@@ -128,7 +128,7 @@ def test_anti_self_match_prevention():
     """
     engine = FaceEngine()
     matcher = FaceMatcher(threshold=0.40)
-    img_path = "sample_images/mark.jpg"
+    img_path = "sample_images/who.jpg"
     analysis = engine.analyze_image(img_path)
     primary_face = analysis.primary_face
 
@@ -158,7 +158,7 @@ def test_selection_strategy_priority_ordering():
     """
     engine = FaceEngine()
     matcher = FaceMatcher(threshold=0.40)
-    img_path = "sample_images/mark.jpg"
+    img_path = "sample_images/who.jpg"
     analysis = engine.analyze_image(img_path)
     primary_face = analysis.primary_face
 
@@ -423,7 +423,7 @@ def test_image_download_failure_excluded():
     """Candidates whose image download fails must be excluded from selection."""
     engine = FaceEngine()
     matcher = FaceMatcher(threshold=0.70)
-    img_path = "sample_images/mark.jpg"
+    img_path = "sample_images/who.jpg"
     analysis = engine.analyze_image(img_path)
     primary_face = analysis.primary_face
 

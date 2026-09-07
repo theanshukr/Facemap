@@ -85,23 +85,18 @@ class IdentityResolver:
         name = name_candidate.strip()
         words = [w for w in re.split(r"\s+", name) if w]
 
-        # Must be 2 to 4 words (e.g. First Last, First Middle Last)
         if not (2 <= len(words) <= 4):
             return False
 
         for word in words:
-            # Each word must be capitalized alphabetic, length >= 2
             if not (word.isalpha() and word[0].isupper() and len(word) >= 2):
                 return False
-            # Check individual word against blacklist
             if word.lower() in GENERIC_TITLE_BLACKLIST:
                 return False
 
-        # Check full combined phrase against blacklist
         if name.lower() in GENERIC_TITLE_BLACKLIST:
             return False
 
-        # Reject common conjunctions or prepositions
         conjunctions = {"and", "or", "the", "in", "on", "at", "for", "with", "by", "of", "from", "to", "is", "a", "an"}
         if any(w.lower() in conjunctions for w in words):
             return False

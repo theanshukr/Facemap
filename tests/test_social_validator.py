@@ -93,7 +93,7 @@ def test_broken_candidate_1_falls_back_to_valid_candidate_2():
     """
     engine = FaceEngine()
     matcher = FaceMatcher(threshold=0.40)
-    img_path = "sample_images/mark.jpg"
+    img_path = "sample_images/who.jpg"
 
     analysis = engine.analyze_image(img_path)
     primary_face = analysis.primary_face
@@ -180,7 +180,7 @@ def test_no_valid_social_candidate_returns_empty_ranked_pool():
     """
     engine = FaceEngine()
     matcher = FaceMatcher(threshold=0.40)
-    img_path = "sample_images/mark.jpg"
+    img_path = "sample_images/who.jpg"
     analysis = engine.analyze_image(img_path)
     primary_face = analysis.primary_face
 
@@ -220,7 +220,7 @@ def test_blocked_by_platform_not_selected_over_accessible_candidate():
     """
     engine = FaceEngine()
     matcher = FaceMatcher(threshold=0.40)
-    img_path = "sample_images/mark.jpg"
+    img_path = "sample_images/who.jpg"
     analysis = engine.analyze_image(img_path)
     primary_face = analysis.primary_face
 

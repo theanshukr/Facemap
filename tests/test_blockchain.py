@@ -64,6 +64,7 @@ def test_live_demo_strictly_rejects_missing_private_key():
 
 def test_contract_verifier_invalid_address():
     verifier = ProofVerifier(network_key="polygon_amoy", contract_address="0xInvalid")
-    outcome = verifier.verify_image_by_contract("sample_images/mark.jpg", "0xInvalid")
+    test_img = "sample_images/who.jpg" if os.path.exists("sample_images/who.jpg") else "sample_images/unknown.webp"
+    outcome = verifier.verify_image_by_contract(test_img, "0xInvalid")
     assert outcome.is_valid is False
     assert "Invalid contract address" in outcome.status

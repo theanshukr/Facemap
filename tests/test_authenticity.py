@@ -17,9 +17,9 @@ from src.utils.crypto_utils import compute_file_sha256, to_bytes32_hex
 
 def test_authenticity_and_tamper_detection():
     # 1. Setup original portrait
-    original_img_path = "sample_images/mark.jpg"
+    original_img_path = "sample_images/who.jpg"
     if not os.path.exists(original_img_path):
-        original_img_path = "sample_images/mark_justice.jpg"
+        original_img_path = "sample_images/unknown.webp"
     assert os.path.exists(original_img_path)
 
     # 2. Extract features & create verified proof record

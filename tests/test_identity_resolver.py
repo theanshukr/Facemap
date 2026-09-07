@@ -423,7 +423,7 @@ def test_multiple_faces_in_candidate_image_selects_best_face():
     FaceMatcher compares against all detected faces and uses the highest valid similarity.
     """
     matcher = FaceMatcher(threshold=0.70)
-    img_path = "sample_images/mark.jpg"
+    img_path = "sample_images/who.jpg" if os.path.exists("sample_images/who.jpg") else "sample_images/unknown.webp"
 
     # Directional embeddings: target is [1, 0, 0...], face0 is [0, 1, 0...], face1 is [1, 0, 0...], face2 is [0, 0, 1...]
     target_emb = [1.0] + [0.0] * 127

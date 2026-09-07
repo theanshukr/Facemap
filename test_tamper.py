@@ -54,7 +54,6 @@ def run_tamper_demo(receipt_path: str = "", image_path: str = ""):
         ))
         return 1
 
-    # Load real receipt
     with open(target_receipt, "r", encoding="utf-8") as f:
         rdata = json.load(f)
 
@@ -108,7 +107,6 @@ def run_tamper_demo(receipt_path: str = "", image_path: str = ""):
 
     verifier = ProofVerifier(network_key="polygon_amoy", contract_address=contract_addr)
 
-    # TEST CASE 1: File Authenticity Verification
     console.print("\n[bold]CASE 1: Verifying Authenticity of Loaded Receipt File...[/bold]")
     if is_file_tampered:
         console.print("[bold red]❌ LOADED RECEIPT FILE HAS BEEN MODIFIED / TAMPERED![/bold red]")
@@ -124,7 +122,6 @@ def run_tamper_demo(receipt_path: str = "", image_path: str = ""):
         else:
             console.print(f"[bold yellow]⚠️ Hash computed: {computed_hash} matches anchored receipt hash.[/bold yellow]")
 
-    # TAMPER TEST SCENARIOS (Testing synthetic attacks against anchored hash)
     scenarios = [
         {
             "name": "Tamper Attack 1: Modified Post URL",

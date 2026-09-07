@@ -11,9 +11,9 @@ from src.face_engine.detector import FaceEngine
 
 def test_face_engine_analysis():
     engine = FaceEngine()
-    test_img = "sample_images/mark.jpg"
+    test_img = "sample_images/who.jpg"
     if not os.path.exists(test_img):
-        test_img = "sample_images/mark_justice.jpg"
+        test_img = "sample_images/unknown.webp"
     assert os.path.exists(test_img)
 
     result = engine.analyze_image(test_img)
