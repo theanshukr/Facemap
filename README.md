@@ -1,4 +1,4 @@
-# Facemap: Face ID + Reverse Search + Blockchain Verification Pipeline
+# Facemap: Face ID + Reverse Search + Blockchain Verification Pipeline 
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Blockchain](https://img.shields.io/badge/Blockchain-Polygon%20Amoy-purple.svg)](https://amoy.polygonscan.com/address/0x1aD68F403Da3B0C800CC7A8666bD107efdd0B331)
